@@ -1,13 +1,12 @@
-import React, {useState}from 'react'
+import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 import { IconLogo,
         IconLogoMobile,
-        Menu, 
+        Menu,
         MenuItem,
-        MenuItemLink, 
-        NavbarContainer, 
-        NavbarWrapper } 
-        from './styled';
-import { FaReact } from "react-icons/fa";
+        NavbarContainer,
+        NavbarWrapper }
+        from './styled.js';
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
@@ -22,8 +21,7 @@ const Navbar = () => {
             <NavbarContainer>
                 <NavbarWrapper>
                     <IconLogo>
-                    <FaReact size={'2em'}/>
-                        blogeate
+                        Ecommerce-ML
                     </IconLogo>
 
                     <IconLogoMobile onClick= {()=> changeClick()}>
@@ -34,16 +32,13 @@ const Navbar = () => {
 
                     <Menu click={click}>
                         <MenuItem onClick= {()=> changeClick()}>
-                            <MenuItemLink>HOME</MenuItemLink>
+                            <Link to='/'>Home</Link>
                         </MenuItem>
                         <MenuItem onClick= {()=> changeClick()}>
-                            <MenuItemLink>CHECK IN</MenuItemLink>
+                            <Link to='/alta'>Checkin</Link>
                         </MenuItem>
                         <MenuItem onClick= {()=> changeClick()}>
-                            <MenuItemLink>ABOUT US</MenuItemLink>
-                        </MenuItem>
-                        <MenuItem onClick= {()=> changeClick()}>
-                            <MenuItemLink>CONTACT</MenuItemLink>
+                            <Link to='/ingresar'>Login</Link>
                         </MenuItem>
                     </Menu>
                 </NavbarWrapper>

@@ -1,10 +1,14 @@
-import Home from "./Pages/Home/Home";
+import {BrowserRouter} from 'react-router-dom'
+import Navbar from './Components/Navbar/Navbar';
+
+import Public from './Routes/Public'
 
 function App() {
   return (
-    <div>
-      <Home/>
-    </div>
+    <BrowserRouter>
+      <Navbar/>
+      <Public/>
+    </BrowserRouter>
   )
 }
 

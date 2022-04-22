@@ -1,12 +1,15 @@
 import styled  from 'styled-components'
 
+const yellow = "#fff159";
+const black = "#333"
+
 export const NavbarContainer = styled.div `
     width: 100%;
     height: 80px;
     position: sticky;
     top: 0;
     z-index: 99;
-    background-color:#072227;
+    background-color:${yellow} ;
 `
 
 export const NavbarWrapper = styled.div`
@@ -26,7 +29,7 @@ export const IconLogo = styled.div`
     justify-content: flex-start;
     align-items: center;
     font-size: 1.2rem;
-    color: #fafafa;
+    color: ${black};
     padding-left: 1rem;
 `
 
@@ -56,18 +59,18 @@ export const MenuItem =styled.li`
     font-weight: 400;
     &:hover{
         background-color:#35858B;
-        border-bottom:0.3rem solid #fafafa;
+        border-bottom:0.3rem solid ${black};
         transition:0.4s ease-in;
     }
     @media screen and (max-width:960px){
         width:100%;
         height:100px;
     }
-`
 
-export const MenuItemLink= styled.a`
-    text-decoration: none;
-    color: #fafafa;
+    a{
+        text-decoration: none;
+        color:${black};
+    }
 `
 
 export const IconLogoMobile = styled.div`
