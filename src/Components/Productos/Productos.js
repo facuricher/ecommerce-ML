@@ -46,7 +46,7 @@ const Productos = () =>{
                     <input onChange={handleChange} type='text' value={keyword}/>
                 </form>
                 <h2>cantidad de productos {response?.paging?.total}</h2>
-                {listadoProductos.map(listadoProducto=><Producto nombre={listadoProducto.title} precio={listadoProducto.price} thumbnail={listadoProducto.thumbnail}/>)}
+                {listadoProductos.map(listadoProducto=><Producto nombre={listadoProducto.title} precio={listadoProducto.price} id={listadoProducto.id} thumbnail={listadoProducto.thumbnail}/>)}
             </div>
         )
     }

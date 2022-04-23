@@ -7,6 +7,7 @@ import Home from '../Pages/Home/Home'
 import Login from '../Pages/Login/Login'
 import Checkin from '../Pages/Checkin/Checkin'
 import Details from '../Pages/Datails/Details'
+import NotFound from '../Pages/NotFound/NotFound'
 
 const Public = () =>{
     return(
@@ -16,6 +17,7 @@ const Public = () =>{
             <Route path='/alta' element={<Checkin/>}/>
             <Route path='/ingresar' element={<Login/>}/>
             <Route path='/producto/:id' element={<Details/>}/>
+            <Route path='*' element={<NotFound/>}/>
         </Routes>
     )
 }
