@@ -46,7 +46,7 @@ export const Menu = styled.ul`
         left: ${({click}) => (click ? 0 : "-100%")};
         flex-direction: column;
         transition: 0.5s all ease-in;
-        background-color:#072227;
+        background-color:${yellow};
     }
 `
 
@@ -77,7 +77,7 @@ export const IconLogoMobile = styled.div`
     display: none;
     @media screen and (max-width:960px) {
         display: flex;
-        color:#fafafa;
+        color:${black};
         font-size:  2rem;
         padding-right:1rem;
     }
