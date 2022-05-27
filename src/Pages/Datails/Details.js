@@ -1,6 +1,14 @@
 import React,{useState, useEffect} from "react"
 import {useParams} from 'react-router-dom'
 import {getByIdProducts} from '../../Service/productsServices'
+import { Button, Card } from "react-bootstrap"
+const styles = {
+    img:{
+        width:"300px",
+        height:"300px",
+        backgroundColor:"red",
+    }
+}
 
 const Details = () =>{
     const{id} = useParams()
@@ -32,11 +40,14 @@ const Details = () =>{
         return <div>Loading..</div>
     }else{
         return(
-            <div>
-                <img src={producto.thumbnail} alt='imagen del producto'/>
-                <p>{producto.title}</p>
-                <p>${producto.price}</p>
-            </div>
+            <Card>
+                <Card.Body>
+                    <Card.Img src={producto.thumbnail} alt='imagen del producto' style={styles.img}/>
+                    <Card.Title>{producto.title}</Card.Title>
+                    <Card.Text>${producto.price}</Card.Text>
+                    <Button>Comprar</Button>
+                </Card.Body>
+            </Card>
         )
     }
 }

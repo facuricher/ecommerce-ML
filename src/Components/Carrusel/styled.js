@@ -5,7 +5,7 @@ export const Img = styled.img`
  
 
  @media screen and (max-width:960px){
-        
+
         height:60vh;
     }
 `

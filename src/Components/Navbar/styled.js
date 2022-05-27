@@ -58,7 +58,7 @@ export const MenuItem =styled.li`
     font-size:1.2rem;
     font-weight: 400;
     &:hover{
-        background-color:#35858B;
+        background-color:yellow;
         border-bottom:0.3rem solid ${black};
         transition:0.4s ease-in;
     }

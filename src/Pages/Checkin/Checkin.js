@@ -1,52 +1,93 @@
-import Password from "../../Components/Password/Password";
+import Input from "../../Components/Input/Input";
+//import Password from "../../Components/Password/Password";
+import {useForm} from "react-hook-form"
+import firebase from "../../Config/firebase";
+import {Form, Button,Alert} from "react-bootstrap"
+
 
 const Checkin = () =>{
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit =async (data)=>{
+        console.log("Form",data)
+        try {
+            const responseUser = await  firebase.auth().createUserWithEmailAndPassword(data.email,data.password)
+            console.log("responseUser", responseUser)
+            if(responseUser.user.uid){
+            const document =  await firebase.firestore().collection("usuarios")
+                .add({
+                    name: data.name,
+                    lastName : data.lastName,
+                    userId : responseUser.user.uid
+                })
+                console.log("document", document)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return(
         <div>
             <h1>Checkin</h1>
-            <form  onSubmit={(event) =>event.preventDefault()}>
-                <label>
-                    Name
-                    <input
-                        placeholder='Enter name'
-                        type='text'
-                    />
-                </label>
-                <label>
-                    Last name 
-                    <input
-                        placeholder='Enter Last name'
-                        type='text'
-                    />
-                </label>
-                <label>
-                    Email
-                    <input
-                        placeholder='YourEmail@gmail.com'
-                        type='text'
-                    />
-                </label>
-                <label>
-                  Phone number
-                    <input
-                        placeholder='Enter phone number'
-                        type='number'
-                    />
-                </label>
-
-                <Password
-                    title= "Password"
-                    placeholder= "enter password"
+            <Form  onSubmit={handleSubmit(onSubmit)}>
+                <Input
+                    label= "Name"
+                    placeholder='Enter name'
+                    register= {{...register("name", { required: true })}}
                 />
-
-                <Password
-                    title= "Repeat password"
-                    placeholder= "repeat password"
+                <Alert>
+                    <Alert.Heading>
+                        {errors.name && <span>This field is required</span>}
+                    </Alert.Heading>
+                </Alert>
+                <Input
+                    label= "Last Name"
+                    placeholder='Enter Last name'
+                    register= {{...register("lastName", { required: true })}}
                 />
+                <Alert>
+                    <Alert.Heading>
+                        {errors.lastName && <span>This field is required</span>}
+                    </Alert.Heading>
+                </Alert>
+                <Input
+                    label= "Email"
+                    type="email"
+                    placeholder='YourEmail@gmail.com'
+                    register= {{...register("email", { required: true })}}
+                />
+                <Alert>
+                    <Alert.Heading>
+                        {errors.email && <span>This field is required</span>}
+                    </Alert.Heading>
+                </Alert>
+                <Input
+                    label= "Phone number"
+                    type= "number"
+                    placeholder='enter number'
+                    register= {{...register("number", { required: true })}}
+                />
+                <Alert>
+                    <Alert.Heading>
+                        {errors.number && <span>This field is required</span>}
+                    </Alert.Heading>
+                </Alert>
+                <Input
+                    label= "Password"
+                    type= "password"
+                    placeholder='enter password'
+                    register= {{...register("password", { required: true })}}
+                />
+                <Alert>
+                    <Alert.Heading>
+                        {errors.password && <span>This field is required</span>}
+                    </Alert.Heading>
+                </Alert>
                 <div>
-                    <button type="submit">Enviar</button>
+                    <Button type="submit">Enviar</Button>
                 </div>
-            </form>
+            </Form>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getAllProducts } from "../../Service/productsServices";
 import Producto from "../Producto/Producto";
+import { Container, Row } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const Productos = () =>{
     const [listadoProductos, setListadoProductos] = useState([])
@@ -42,11 +44,21 @@ const Productos = () =>{
     }else{
         return(
             <div>
-                <form onSubmit={handleSubmit}>
-                    <input onChange={handleChange} type='text' value={keyword}/>
-                </form>
+                <Container>
+                <Form className="d-flex" onSubmit={handleSubmit}>
+                    <Form.Control 
+                        onChange={handleChange}
+                        value={keyword} type="search"
+                        placeholder="Search"
+                        className="me-1"
+                        aria-label="Search"
+                    />
+                </Form>
+                </Container>
                 <h2>cantidad de productos {response?.paging?.total}</h2>
-                {listadoProductos.map(listadoProducto=><Producto nombre={listadoProducto.title} precio={listadoProducto.price} id={listadoProducto.id} thumbnail={listadoProducto.thumbnail}/>)}
+                <Row>
+                    {listadoProductos.map(listadoProducto=><Producto nombre={listadoProducto.title} precio={listadoProducto.price} id={listadoProducto.id} thumbnail={listadoProducto.thumbnail}/>)}
+                </Row>
             </div>
         )
     }

@@ -8,6 +8,10 @@ const Password = (props) =>{
     const[pwd, setPwd]= useState('')
     const[isRevealPwd, setIsRevealPwd]= useState(false)
 
+    const valor= (e) => {
+        setPwd(e.target.value)
+    }
+
     return(
         <div>
             <label>
@@ -16,7 +20,7 @@ const Password = (props) =>{
                     placeholder={placeholder}
                     type={isRevealPwd ? 'text' : 'password'}
                     value= {pwd}
-                    onChange={(e)=> setPwd(e.target.value)}
+                    onChange={valor}
                 />
                 <div
                     title={isRevealPwd ? 'hide password' : 'show password'}
